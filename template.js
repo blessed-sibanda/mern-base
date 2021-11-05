@@ -10,6 +10,7 @@ export default () => {
   </head>
   <body>
     <div id="root">Hello MERN</div>
+    <script src="/dist/bundle.js"></script>
   </body>
   </html>
   `;
