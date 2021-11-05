@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.16.0",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
     "@hot-loader/react-dom": "^17.0.1",
     "@mui/material": "^5.0.6",
     "compression": "^1.7.4",
@@ -37,13 +39,13 @@
     "express-jwt": "^6.1.0",
     "express-validator": "^6.13.0",
     "helmet": "^4.6.0",
+    "history": "5",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
-    "react-router": "^6.0.0",
     "react-router-dom": "^6.0.0"
   }
 }

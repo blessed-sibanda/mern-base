@@ -1,8 +1,18 @@
+import { ThemeProvider } from '@mui/system';
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { BrowserRouter } from 'react-router-dom';
+import MainRouter from './MainRouter';
+import theme from './theme';
 
 const App = () => {
-  return <h1>MERN Base</h1>;
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <MainRouter />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
 };
 
 export default hot(module)(App);
