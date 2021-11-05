@@ -7,6 +7,7 @@ import {
 } from '../validations/user.validation';
 import { handleValidationErrors } from '../validations/validator';
 import User from '../models/user.model';
+import auth from '../helpers/auth';
 
 const router = Router();
 
@@ -51,21 +52,26 @@ router.param('userId', async (req, res, next, id) => {
 
 router
   .route('/:userId')
-  .get(async (req, res) => {
+  .get(auth.requireSignIn, async (req, res) => {
     return res.json(req.profile.data);
   })
-  .put(...userUpdateValidations, async (req, res) => {
-    try {
-      handleValidationErrors(req);
-      let user = req.profile;
-      user = extend(user, req.body);
-      await user.save();
-      return res.json(user.data);
-    } catch (error) {
-      return res.status(400).json({ error });
-    }
-  })
-  .delete(async (req, res) => {
+  .put(
+    auth.requireSignIn,
+    auth.hasAuthorization,
+    ...userUpdateValidations,
+    async (req, res) => {
+      try {
+        handleValidationErrors(req);
+        let user = req.profile;
+        user = extend(user, req.body);
+        await user.save();
+        return res.json(user.data);
+      } catch (error) {
+        return res.status(400).json({ error });
+      }
+    },
+  )
+  .delete(auth.requireSignIn, auth.hasAuthorization, async (req, res) => {
     try {
       let user = req.profile;
       let deletedUser = await user.remove();
