@@ -1,19 +1,27 @@
+import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/system';
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { BrowserRouter, Link } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import createEmotionCache from './createEmotionCache';
+import { CacheProvider } from '@emotion/react';
 import MainRouter from './MainRouter';
 import theme from './theme';
 
+const cache = createEmotionCache();
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <NavBar />
-        <MainRouter />
-      </ThemeProvider>
-    </BrowserRouter>
+    <CacheProvider value={cache}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <NavBar />
+          <MainRouter />
+        </ThemeProvider>
+      </BrowserRouter>
+    </CacheProvider>
   );
 };
 

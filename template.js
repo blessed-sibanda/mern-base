@@ -1,4 +1,4 @@
-export default () => {
+export default ({ markup, css }) => {
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -7,6 +7,8 @@ export default () => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MERN Base</title>
+
+    ${css}
 
     <link
       rel="stylesheet"
@@ -21,7 +23,7 @@ export default () => {
     </style>
   </head>
   <body>
-    <div style='margin:0' id="root"></div>
+    <div id="root">${markup}</div>
     <script type="text/javascript" src="/dist/bundle.js"></script>
   </body>
   </html>
