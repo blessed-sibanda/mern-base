@@ -6,22 +6,17 @@ import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { StaticRouter } from 'react-router-dom/server';
 import createEmotionServer from '@emotion/server/create-instance';
 import ReactDOMServer from 'react-dom/server';
-import { CacheProvider } from '@emotion/react';
 import React from 'react';
-import theme from '../client/theme';
-import MainRouter from '../client/MainRouter';
-import NavBar from '../client/components/NavBar';
 
 import template from '../template';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import devBundle from './devBundle';
 import createEmotionCache from '../client/createEmotionCache';
+import App from '../client/App';
 
 const app = express();
 devBundle.compile(app);
@@ -47,15 +42,9 @@ app.get('*', (req, res) => {
   const context = {};
 
   const html = ReactDOMServer.renderToString(
-    <CacheProvider value={cache}>
-      <StaticRouter location={req.url} context={context}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <NavBar />
-          <MainRouter />
-        </ThemeProvider>
-      </StaticRouter>
-    </CacheProvider>,
+    <StaticRouter location={req.url} context={context}>
+      <App cache={cache} />
+    </StaticRouter>,
   );
 
   const emotionChunks = extractCriticalToChunks(html);
