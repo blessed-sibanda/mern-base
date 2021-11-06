@@ -133,7 +133,7 @@ const SignUp = () => {
           </Button>
         </CardActions>
       </Card>
-      <Dialog open={open} disableBaackdropClick={true}>
+      <Dialog open={open} disablebackdropclick={true}>
         <DialogTitle>New Account</DialogTitle>
         <DialogContent>{message}</DialogContent>
         <DialogActions>
