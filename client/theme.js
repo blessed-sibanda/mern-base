@@ -1,11 +1,11 @@
 import { createTheme } from '@mui/material/styles';
-import { pink } from '@mui/material/colors';
+import { pink, blue } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
     primary: {
       light: '#5c67a3',
-      main: '#3f4771',
+      main: blue['700'],
       dark: '#2e355b',
       contrastText: '#fff',
     },
@@ -15,9 +15,8 @@ const theme = createTheme({
       dark: '#c60055',
       contrastText: '#000',
     },
-    openTitle: '#3f4771',
+    openTitle: blue['700'],
     protectedTitle: pink['400'],
-    type: 'light',
   },
 });
 

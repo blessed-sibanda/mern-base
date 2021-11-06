@@ -31,11 +31,7 @@ export const userUpdateValidations = [
     .isLength({ min: 3 })
     .withMessage('Name must be at least 3 characters'),
 
-  check('email')
-    .optional()
-    .isEmail()
-    .withMessage('Email is invalid')
-    .custom(uniqueEmail),
+  check('email').optional().isEmail().withMessage('Email is invalid'),
 
   check('password')
     .optional()

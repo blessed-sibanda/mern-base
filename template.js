@@ -12,9 +12,16 @@ export default () => {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
     />
+
+    <style>
+      a{
+        text-decoration: none;
+        color: #061d95
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div style='margin:0' id="root"></div>
     <script type="text/javascript" src="/dist/bundle.js"></script>
   </body>
   </html>

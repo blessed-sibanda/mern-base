@@ -1,7 +1,16 @@
-import { Card, CardContent, CardMedia, Typography, useTheme } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import unicornBikeImg from '../assets/images/unicornbike.jpg';
+import authHelper from '../helpers/auth-helper';
 
 const useStyles = () => {
   const theme = useTheme();
